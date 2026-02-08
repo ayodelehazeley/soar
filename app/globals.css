@@ -1,26 +1,34 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-energy-green: #00FF41;
+  --color-coal: #121212;
+  --color-slate-steel: #2A2D2E;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html, body {
+    @apply p-0 m-0 scroll-smooth bg-white text-coal;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .industrial-card {
+    @apply bg-white border-l-4 border-l-energy-green shadow-sm hover:shadow-md transition-all duration-300 p-8;
+  }
+  
+  .btn-energy {
+    @apply bg-energy-green text-black px-8 py-4 font-black uppercase tracking-tighter hover:bg-black hover:text-energy-green transition-all duration-300 flex items-center gap-2;
+  }
+
+  .stat-label {
+    @apply text-energy-green font-mono text-[10px] tracking-[0.3em] uppercase mb-2 block font-bold;
+  }
+}
+
+/* Industrial Grid (Blueprint Style) */
+.bg-blueprint {
+  background-image: radial-gradient(circle, #00FF4115 1px, transparent 1px);
+  background-size: 20px 20px;
 }
